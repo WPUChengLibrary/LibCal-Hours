@@ -1,0 +1,122 @@
+<!--- LibCal widget script --->
+
+<!--- Widget code comes from LibCal: Admin -> Hours -> Widgets --->
+<!--- If your page/site already references jquery, you may not need the first script tag --->
+
+<!--- Be sure to replace all references to iid and lid with your own LibCal ids, even if they are part of a larger id (s-lc-whw4756, week4756, etc.) --->
+
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script> 
+	<script src="//api3.libcal.com/js/hours_grid.js?002"></script> 
+	<div id="s-lc-whw4756"></div> 
+	<script>
+	$(function(){ 
+	var week4756 = new $.LibCalWeeklyGrid( $("#s-lc-whw4756"), { iid: 3621, lid: 4756,  weeks: 4 }); 
+	});
+	</script>
+
+
+<!--- The above code creates a horizontal calendar display, showing four weeks of library hours. --->
+<!--- Each week is presented as a div with a table inside it. --->
+<!--- Only the first week is visible, by default. --->
+<!--- In order to adjust the presentation of this information, the following JS was used to find the values of specific table cells and create a new display --->
+
+<!--- This code pulls out the dates and times for two weeks worth of hours, and creates a new layout using floating divs. --->
+<!--- The JS is rough, and can probably be streamlined with some loops, down the road. --->
+<!--- Again, any reference to your iid or lid must be replaced in order for this to work properly.
+
+	<script type="text/javascript">
+
+	$(document).ready(function() {
+
+		function myHandler()
+		{    	
+		/*	var newhead = $('#s-lc-whw4756 .s-lc-whw-locname').html();
+			$('#hrhead').html(newhead + " <a href='http://www.wpunj.edu/library/pdf/library-hours/LibraryHours.pdf'>Full Schedule</a>"); */
+		   
+			/* Set vars pointing to the divs containing the two weeks to be manipulated */
+			var newcaln = $('div.table-responsive:nth-of-type(1)').attr('id');
+			var newcaln2 = $('div.table-responsive:nth-of-type(2)').attr('id');
+
+			/* First Week: Dates */
+			var newsun = $('#' + newcaln + ' th:nth-child(2) span').html();
+			var newmon = $('#' + newcaln + ' th:nth-child(3) span').html();
+			var newtue = $('#' + newcaln + ' th:nth-child(4) span').html();
+			var newwed = $('#' + newcaln + ' th:nth-child(5) span').html();
+			var newthu = $('#' + newcaln + ' th:nth-child(6) span').html();
+			var newfri = $('#' + newcaln + ' th:nth-child(7) span').html();
+			var newsat = $('#' + newcaln + ' th:nth-child(8) span').html();
+			
+			/* Second Week: Dates */
+			var newsun2 = $('#' + newcaln2 + ' th:nth-child(2) span').html();
+			var newmon2 = $('#' + newcaln2 + ' th:nth-child(3) span').html();
+			var newtue2 = $('#' + newcaln2 + ' th:nth-child(4) span').html();
+			var newwed2 = $('#' + newcaln2 + ' th:nth-child(5) span').html();
+			var newthu2 = $('#' + newcaln2 + ' th:nth-child(6) span').html();
+			var newfri2 = $('#' + newcaln2 + ' th:nth-child(7) span').html();
+			var newsat2 = $('#' + newcaln2 + ' th:nth-child(8) span').html();
+			
+
+			/* First Week: Hours */
+			var sunhrs = $('#' + newcaln + ' tbody td:nth-child(2) span').html();
+			var monhrs = $('#' + newcaln + ' tbody td:nth-child(3) span').html();
+			var tuehrs = $('#' + newcaln + ' tbody td:nth-child(4) span').html();
+			var wedhrs = $('#' + newcaln + ' tbody td:nth-child(5) span').html();
+			var thuhrs = $('#' + newcaln + ' tbody td:nth-child(6) span').html();
+			var frihrs = $('#' + newcaln + ' tbody td:nth-child(7) span').html();
+			var sathrs = $('#' + newcaln + ' tbody td:nth-child(8) span').html();
+
+			/* Second Week: Hours */
+			var sunhrs2 = $('#' + newcaln2 + ' tbody td:nth-child(2) span').html();
+			var monhrs2 = $('#' + newcaln2 + ' tbody td:nth-child(3) span').html();
+			var tuehrs2 = $('#' + newcaln2 + ' tbody td:nth-child(4) span').html();
+			var wedhrs2 = $('#' + newcaln2 + ' tbody td:nth-child(5) span').html();
+			var thuhrs2 = $('#' + newcaln2 + ' tbody td:nth-child(6) span').html();
+			var frihrs2 = $('#' + newcaln2 + ' tbody td:nth-child(7) span').html();
+			var sathrs2 = $('#' + newcaln2 + ' tbody td:nth-child(8) span').html();
+			
+			/* Create divs to present culled dates/times */
+			/* For efficiency, both weeks are contained in a single set of tags, with the first visible, and the second hidden */
+			
+			$('#sun').html("<div class='floatr'><span class='wk1'>" + sunhrs + "</span><span class='wk2'>" + sunhrs2 + "</span></div><div>Sunday, <span class='wk1'>" + newsun + "</span><span class='wk2'>" + newsun2 + "</span></div>");
+			$('#mon').html("<div class='floatr'><span class='wk1'>" + monhrs + "</span><span class='wk2'>" + monhrs2 + "</span></div><div>Monday, <span class='wk1'>" + newmon + "</span><span class='wk2'>" + newmon2 + "</span></div>");		
+			$('#tue').html("<div class='floatr'><span class='wk1'>" + tuehrs + "</span><span class='wk2'>" + tuehrs2 + "</span></div><div>Tuesday, <span class='wk1'>" + newtue + "</span><span class='wk2'>" + newtue2 + "</span></div>");
+			$('#wed').html("<div class='floatr'><span class='wk1'>" + wedhrs + "</span><span class='wk2'>" + wedhrs2 + "</span></div><div>Wednesday, <span class='wk1'>" + newwed + "</span><span class='wk2'>" + newwed2 + "</span></div>");
+			$('#thu').html("<div class='floatr'><span class='wk1'>" + thuhrs + "</span><span class='wk2'>" + thuhrs2 + "</span></div><div>Thursday, <span class='wk1'>" + newthu + "</span><span class='wk2'>" + newthu2 + "</span></div>");
+			$('#fri').html("<div class='floatr'><span class='wk1'>" + frihrs + "</span><span class='wk2'>" + frihrs2 + "</span></div><div>Friday, <span class='wk1'>" + newfri + "</span><span class='wk2'>" + newfri2 + "</span></div>");
+			$('#sat').html("<div class='floatr'><span class='wk1'>" + sathrs + "</span><span class='wk2'>" + sathrs2 + "</span></div><div>Saturday, <span class='wk1'>" + newsat + "</span><span class='wk2'>" + newsat2 + "</span></div>");
+
+		/* Example of previous code 
+			$('#sat').html("<div class='floatr'>" + sathrs + "</div><div>Saturday, " + newsat + "</div>");
+		*/        
+		
+		};
+
+		/* Creates functions to change from week to week. */
+		
+		/* I do not believe that this first line actually does anything.  But, hey... it can't hurt to leave it until I'm sure. */
+		window.onload = myHandler;
+
+		/* This function directs the 'right' button, labeled 'Next Week', to hide/show the appropriate week */
+		$("#rcl").click(function(){
+			$(".wk1").hide();
+			$(".wk2").show();
+			$("#rcl").css("color", "#888888");
+			$("#lcl").css("color", "#000000");
+			$("#rcl").css("cursor", "default");
+			$("#lcl").css("cursor", "pointer");
+		});
+		
+		/* This function does the opposite of the last, allowing users to toggle between 'This Week' and 'Next Week' */
+
+		$("#lcl").click(function(){
+			$(".wk1").show();
+			$(".wk2").hide();
+			$("#lcl").css("color", "#888888");
+			$("#rcl").css("color", "#000000");
+			$("#lcl").css("cursor", "default");
+			$("#rcl").css("cursor", "pointer");        
+		});
+	});
+
+
+	</script>

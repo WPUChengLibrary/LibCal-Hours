@@ -1,0 +1,25 @@
+<!--- Insert this code wherever you want your hours to appear --->
+<!--- Currently functions best on more static pages, as it degrades with responsive designs --->
+
+<div id="newhrs" class="grid_8 omega" style="z-index: auto; float: right;">
+
+
+	<h4 id="hrhead">Cheng Library Hours <span id="fullhrs">(<a href="http://www.wpunj.edu/library/calendars/LibraryHours.pdf">Full Schedule</a>)</span> <table id="range"<tr><td><span id="lcl">This Week</span> | <span id="rcl">Next Week</span></td></tr></table></h4>
+
+	<div class="days odd" id="sun"><div class="floatr">Closed</div><div>Sunday, Dec 18<br></div></div>
+	<div class="days" id="mon"><div class="floatr">8:30am – 4:30pm</div><div>Monday, Dec 19<br></div></div>
+	<div class="days odd" id="tue"><div class="floatr">8:30am – 4:30pm</div><div>Tuesday, Dec 20<br></div></div>
+	<div class="days" id="wed"><div class="floatr">8:30am – 4:30pm</div><div>Wednesday, Dec 21<br></div></div>
+	<div class="days odd" id="thu"><div class="floatr">8:30am – 4:30pm</div><div>Thursday, Dec 22<br></div></div>
+	<div class="days" id="fri"><div class="floatr">8:30am – 4:30pm</div><div>Friday, Dec 23<br></div></div>
+	<div class="days odd" id="sat"><div class="floatr">Closed</div><div>Saturday, Dec 24<br></div></div>
+
+	<div class="contactscontain">
+		<div class="floatr"><a href="mailto:refdesk@wpunj.edu">refdesk@wpunj.edu</a> or <a href="tel:9737202116">(973) 720-2116</a></div><div class="contacts">Reference</div>
+	</div>
+
+	<div class="contactscontain">
+		<div class="floatr"><a href="tel:9737203180">(973) 720-3180</a></div><div class="contacts">Lending Services</div>
+	</div>
+
+</div>
